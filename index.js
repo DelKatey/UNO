@@ -241,6 +241,8 @@ You can execute up to two commands in a single message by separating them with \
     },
     async start(msg, words) {
         let game = games[msg.channel.id];
+        if (game  === undefined)
+            return "OMG, please join and then try to do something!";
         if (game.queue.length > 1) {
             if (game.player.id !== msg.author.id)
                 return "Sorry, but you can't start a game you didn't create!";
@@ -259,7 +261,7 @@ You can execute up to two commands in a single message by separating them with \
         }
     },
     async invite(msg, words) {
-        return '<https://discordapp.com/oauth2/authorize?client_id=403419413904228352&scope=bot&permissions=0>';
+        return '<https://discordapp.com/oauth2/authorize?client_id=CLIENT_ID_HERE&scope=bot&permissions=0>';
     },
     async stats(msg, words) {
         var memory = process.memoryUsage();
