@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <header>
-        <img align="right" src="https://i.imgur.com/gPqANIq.png" height="200" width="200">
+        <img align="right" src="https://i.imgur.com/Ot36eek.png" height="220" width="220">
         <h1>UNO BOT</h1>
         <p><b>Uncomplete and semi-configurable UNO Discord bot!</b></p>
     </header>
