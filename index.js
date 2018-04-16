@@ -576,7 +576,7 @@ class Card {
     }
 
     get URL() {
-        return `https://raw.githubusercontent.com/Ratismal/UNO/master/cards/${this.color || ''}${this.id}.png`
+        return `https://raw.githubusercontent.com/zerguet/UNO/master/cards/${this.color || ''}${this.id}.png`
     }
 
     get value() {
