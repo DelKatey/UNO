@@ -261,7 +261,7 @@ You can execute up to two commands in a single message by separating them with \
         }
     },
     async invite(msg, words) {
-        return '<https://discordapp.com/oauth2/authorize?client_id=CLIENT_ID_HERE&scope=bot&permissions=0>';
+        return 'Sorry, I\'m afraid I can\'t do that.';
     },
     async stats(msg, words) {
         var memory = process.memoryUsage();
@@ -276,7 +276,7 @@ You can execute up to two commands in a single message by separating them with \
         }
     },
     async eval(msg, words, text) {
-        if (msg.author.id !== '103347843934212096') return 'NOU';
+        if (msg.author.id !== '248780077620264960') return 'NOU';
         let code = `async () => {
     ${text}
 }`;
@@ -288,6 +288,9 @@ You can execute up to two commands in a single message by separating them with \
         } catch (err) {
             return `\`\`\`js\n${err.stack}\n\`\`\``;
         }
+    },
+    async spank(msg, words) {
+        return 'Oh yes, Daddy!';
     },
     async ping(msg, words) {
         return 'Pong!';
