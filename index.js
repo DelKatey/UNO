@@ -72,7 +72,17 @@ const commands = {
 **${prefix.toUpperCase()} CALLOUT** - Calls a player out for only having one card left!
 **${prefix.toUpperCase()}!** - Let everyone know that you only have one card left!
 
-You can execute up to two commands in a single message by separating them with \`&&\`!`;
+Following shortcuts also work as commands:
+
+**yellow** = y
+**blue** = b
+**red** = r
+**green** = g
+**play** = pla, pl, p
+**pickup** = draw, d
+**callout** = call, co
+
+You can execute two commands in a single message by separating them with \`&&\`!`;
 
         return out;
     },
@@ -164,6 +174,7 @@ You can execute up to two commands in a single message by separating them with \
                 let extra = '';
                 switch (card.id) {
                     case 'REVERSE':
+                    case 'R':
                         if (game.queue.length >= 2) {
                             let player = game.queue.shift();
                             game.queue.reverse();
@@ -172,6 +183,7 @@ You can execute up to two commands in a single message by separating them with \
                             break;
                         }
                     case 'SKIP':
+                    case 'S':
                         game.queue.push(game.queue.shift());
                         extra = `Sorry, ${game.player.member.user.username}! Skip a turn! `;
                         break;
@@ -190,9 +202,12 @@ You can execute up to two commands in a single message by separating them with \
                         }
                         break;
                     case 'WILD':
+                    case 'W':
                         extra = `In case you missed it, the current color is now **${card.colorName}**! `;
                         break;
-                    case 'WILD+4': {
+                    case 'WILD+4':
+                    case 'W+4':
+                    {
                         // let player = game.queue.shift();
                         await game.deal(game.queue[1], 4);
                         // game.queue.unshift(player);
@@ -261,7 +276,7 @@ You can execute up to two commands in a single message by separating them with \
         }
     },
     async invite(msg, words) {
-        return 'Sorry, I\'m afraid I can\'t do that.';
+        return '<https://discordapp.com/api/oauth2/authorize?client_id=434317715386269707&permissions=0&scope=bot>';
     },
     async stats(msg, words) {
         var memory = process.memoryUsage();
@@ -290,7 +305,13 @@ You can execute up to two commands in a single message by separating them with \
         }
     },
     async spank(msg, words) {
-        return 'Oh yes, Daddy!';
+        return 'Harder, Daddy!';
+    },
+    async info(msg, words) {
+        return 'Ask zerguet#0600 for more info';
+    },
+    async fu(msg, words) {
+        return 'Fuck me harder, Daddy!';
     },
     async ping(msg, words) {
         return 'Pong!';
@@ -316,6 +337,8 @@ You can execute up to two commands in a single message by separating them with \
             } else return `You've already said UNO!`;
         }
     },
+    async call(msg, words) { return await commands.callout(msg, words); },
+    async co(msg, words) { return await commands.callout(msg, words); },
     async callout(msg, words) {
         let game = games[msg.channel.id];
         if (game && game.started && game.players[msg.author.id]) {
@@ -517,6 +540,7 @@ class Player {
             color = words[0];
             id = words[1];
         }
+
         let _color = this.parseColor(color);
         if (!_color) {
             let temp = color;
@@ -529,7 +553,23 @@ class Player {
             }
         }
         color = _color;
-        console.log(color, id);
+
+        // Add shorthand for special cards
+        switch(id.toUpperCase()) {
+            case 'W':
+                id = 'WILD';
+                break;
+            case 'R':
+                id = 'REVERSE';
+                break;
+            case 'W+4':
+                id = 'WILD+4';
+                break;
+            case 'S':
+                id = 'SKIP';
+                break;
+        }
+
         if (['WILD', 'WILD+4'].includes(id.toUpperCase())) {
             let card = this.hand.find(c => c.id === id.toUpperCase());
             if (!card) return undefined;
@@ -569,7 +609,7 @@ class Card {
         }[this.color];
     }
 
-    get colorCode() {
+    get colorCode() {``
         return {
             R: 0xff5555,
             Y: 0xffaa00,
