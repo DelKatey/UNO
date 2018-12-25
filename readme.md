@@ -91,8 +91,35 @@ Automatically plays a card after drawing, if possible. If a wild card is drawn, 
 You may selfhost (AKA run your own instance of) this bot under the following circumstances:
 - Your instance (referred to as a "clone") must be **private**.
     - As such, your clone must not be listed on any sort of public bot listing.
-- You understand that no support will be provided to aid you in self-hosting.
-- You agree to not submit any issues, features, or pull requests related to bugs exclusively related to self-hosting.
+
+<!DOCTYPE html>
+<html>
+<h3>Using the UNO Bot</h2>
+        <p><b><i>Since it's very easy to setup and host it for free I won't make public invite link for it! </i></b></p>
+        <p>More information about making your discord bot <a href="https://github.com/zerguet/UNO/wiki/Creating-a-discord-bot-&-getting-a-token">here</a>.</p>
+        <p>Invite link can be changed on line <code>264</code> of <code>Index.js</code>.</p>
+        <hr>
+        <h3>Setting up UNO bot on your own</h2>
+        <ul>
+            <li>Install <a href="https://nodejs.org/en/">NodeJS</a></li>
+            <li>Download Uno bot</li>
+            <li>Extract files to a folder</li>
+            <li>Open <code>config.json</code> and replace placeholder with your <a href="https://github.com/zerguet/UNO/wiki/Creating-a-discord-bot-&-getting-a-token">bot token</a> and save changes</li>
+            <li>Open command prompt by typing <code>cmd</code> in folders' address bar</li>
+            <li>Type <code>npm install</code> in command prompt</li>
+            <li>close command prompt when finished installing</li>
+</ul>
+           <h5>Initial bot configuration is now complete.</h4>
+           <hr>
+        <h3>Running UNO bot</h2>
+        <ul>
+            <li>Open command prompt as in previous step</li>
+            <li>Type <code>node .</code> </li>
+</ul>
+           <h5>Bot is up and running</h4>
+            <br>
+        </body>
+</html>
 
 ## Disclaimer
 
